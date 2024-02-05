@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app-b
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs-app-b
+  template:
+    metadata:
+      labels:
+        app: nodejs-app-b
+    spec:
+      containers:
+        - name: nodejs-container
+          image: localhost:5000/nodejs-app:latest
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 3000
+          env:
+            - name: SALUTATION_TEXT
+              value: "Hello A"
+            - name: HTTP_PORT
+              value: "3000"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-service-b
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 3000
+  selector:
+    app: nodejs-app-b
