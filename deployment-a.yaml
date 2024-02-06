@@ -21,7 +21,7 @@ spec:
             - containerPort: 3000
           env:
             - name: SALUTATION_TEXT
-              value: "Hello A"
+              value: "Hello Madam"
             - name: HTTP_PORT
               value: "3000"
 
