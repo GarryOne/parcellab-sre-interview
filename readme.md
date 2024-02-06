@@ -10,8 +10,6 @@ There is a `GET /` endpoint which displays a `SALUTION_TEXT` defined in the ENV.
 
 ## Setup
 
-
-
 ### Minikube
 
 1. Have `minikube installed`. Then run `minikube start`
@@ -26,8 +24,10 @@ There is a `GET /` endpoint which displays a `SALUTION_TEXT` defined in the ENV.
 5. Run `./docker-push.sh`
 6. Run `./deploy-k8s.sh`
 
-Add instructions about port-forward. How to test each service? 
+Alternatively, you can use `./deploy.sh` which combines both of the above.
 
+## Unit test
+* There is one unit test that assesses if `SALUTATION_TEXT` env value is being returned by the endpoint. It's running inside Dockerfile.
 
 ## Test
 * `kubectl port-forward svc/nodejs-service-a -n default 8080:80` - http://localhost:8080 - you'll get `Hello Madam`
