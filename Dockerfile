@@ -16,6 +16,7 @@ COPY . .
 
 # Build your application
 RUN npm run build
+RUN npm run test
 
 # Stage 2: Runtime
 # Use an official Node.js runtime as a parent image for the runtime stage
